@@ -5,7 +5,7 @@ import os
 
 # Load environment variables
 load_dotenv()
-api_key=os.getenv("GITHUB_MODEL_API_KEY")
+api_key=os.getenv("GITHUB_MODEL_API_KEY") or st.secrets.get("GITHUB_MODEL_API_KEY")
 
 # GitHub model API 
 client = OpenAI(
