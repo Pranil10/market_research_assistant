@@ -24,7 +24,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# --- 💬 Chat History ---
+# Chat History
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
@@ -32,12 +32,9 @@ for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
         st.markdown(msg["content"])
 
-# --- 📥 User Input ---
-#userinput = st.chat_input("Enter a company name (e.g., HDFC, Mahindra)...")
-# ⌨️ Chat Input
+# Chat Input
 userinput = st.chat_input("Enter a company name (e.g., HDFC, Mahindra)...")
 
-# 🧰 TOOLS (like a dropdown toolbar)
 with st.expander("🛠️ Modes"):
     st.session_state.prompt_type = st.radio(
         "Select Prompt Type:",
@@ -45,9 +42,6 @@ with st.expander("🛠️ Modes"):
         horizontal=True,
         key="mode_selector"
     )
-
-
-
 
 if userinput:
     # Save user message
@@ -73,7 +67,7 @@ if userinput:
         },
     ]
 
-    # 🧠 Model Call
+    # Model Call
     with st.chat_message("assistant"):
         with st.spinner("🧠 Thinking like a research pro..."):
             try:
